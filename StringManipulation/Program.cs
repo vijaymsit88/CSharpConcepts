@@ -15,7 +15,11 @@ namespace StringManipulation
             //AppendingStrings();
             //InterpolationAndLiteral();
             //StringBuilderDemo();
-            WorkingWithArrays();
+            //WorkingWithArrays();
+            //PadAndTrim();
+            //searchingStrings();
+            //OrderingStrings();
+            GettingASubstring();
 
         }
 
@@ -126,7 +130,7 @@ namespace StringManipulation
 
             results = String.Concat(ages);
             Console.WriteLine(results);
-            //o/p = 67835
+            //op = 67835
 
             results = String.Join(",", ages);
             Console.WriteLine(results);
@@ -156,5 +160,110 @@ namespace StringManipulation
             //Jane
 
         }
+
+        private static void PadAndTrim()
+        {
+            string testString = "      Hello World    ";
+            string results;
+
+            results = testString.TrimStart();
+            Console.WriteLine($"'{results}'");
+
+            results = testString.TrimEnd();
+            Console.WriteLine($"'{results}'");
+
+            results = testString.Trim();
+            Console.WriteLine($"'{results}'");
+
+            // Only single characters can be added in padding
+            testString = "1.15";
+            results = testString.PadLeft(10, '0');
+            Console.WriteLine($"'{results}'");
+
+            results = testString.PadRight(10, '0');
+            Console.WriteLine($"'{results}'");
+
+        }
+
+        private static void searchingStrings()
+        {
+            string testString = "This is a test of the search. Let's see how its testing works out.";
+            bool resultsBoolean;
+            int resultsInt;
+
+            //StartsWith is case sensitive.
+            resultsBoolean = testString.StartsWith("This is");
+            Console.WriteLine($"Starts with \"This is\": {resultsBoolean}");
+
+            //EndsWith is case sensitive.
+            resultsBoolean = testString.EndsWith("works out.");
+            Console.WriteLine($"Ends with \"works out\": {resultsBoolean}");
+
+            resultsBoolean = testString.Contains("test");
+            Console.WriteLine($"Starts with \"test\": {resultsBoolean}");
+
+            resultsBoolean = testString.Contains("tests");
+            Console.WriteLine($"Ends with \"tests\": {resultsBoolean}");
+
+            //To find index of starting of a word
+            // it gives index as 10 which is the starting index of 't'est
+            resultsInt = testString.IndexOf("test");
+            Console.WriteLine($"Index of\"test\": {resultsInt}");
+            //op = 10
+
+            //giving 2nd parameter will start searching from this index onwards (including)
+            resultsInt = testString.IndexOf("test", 11);
+            Console.WriteLine($"Index of\"test\" after character 10: {resultsInt}");
+
+            // If nothing is found then it gives -1
+
+            
+            resultsInt = testString.LastIndexOf("test");
+            Console.WriteLine($"Last Index of\"test\": {resultsInt}");
+
+            //If you give a 2nd parameter to LastIndexOf then it looks backwards in the string in reverse order.
+            //op = 10
+            //Last index of counts from 2nd parameter till very begining of the string.
+            resultsInt = testString.LastIndexOf("test", 50);
+            Console.WriteLine($"Last Index of\"test\" before character 50: {resultsInt}");
+            //op = 10
+
+            resultsInt = testString.LastIndexOf("test", 10);
+            Console.WriteLine($"Last Index of\"test\" before character 10: {resultsInt}");
+            //op = -1
+
+        }
+
+        private static void CompareStrings()
+        {
+            // str1.CompareTo(str2) --> str1 cannot be null
+            // String.Compare(str1, str2) --> str1 and str2 both can be null
+            // str1 is subtracted from str2 and the result decides which is greater.
+
+            // Equality -->
+            // String.Equals(str1, str2)
+            // it is case sensitive
+
+            // to make it case sensitive
+            //String.Equals(str1, str2, StringComparison.InvariantCultureIgnoreCase)
+        }
+
+        private static void GettingASubstring()
+        {
+            string testString = "This is a test of substring. Let's see how its testing works out.";
+            string results;
+
+            results = testString.Substring(5);
+            Console.WriteLine(results);
+            //starts from 5th index (inclusive)
+            //op = is a test of substring. Let's see how its testing works out.
+
+            results = testString.Substring(5, 4);
+            Console.WriteLine(results);
+            //starts from 5th index (inclusive)
+            //starts from index 5 and take 4 characters from there.
+            //op = is a
+        }
+
     }
 }
