@@ -19,7 +19,11 @@ namespace StringManipulation
             //PadAndTrim();
             //searchingStrings();
             //OrderingStrings();
-            GettingASubstring();
+            //GettingASubstring();
+            //ReplacingText();
+            //InsertingText();
+            //RemovingText();
+            ReverseText();
 
         }
 
@@ -263,6 +267,63 @@ namespace StringManipulation
             //starts from 5th index (inclusive)
             //starts from index 5 and take 4 characters from there.
             //op = is a
+        }
+
+        private static void ReplacingText()
+        {
+            string testString = "This is a test of replace. Let's see how its testing works out.";
+            string results;
+
+            results = testString.Replace("test", "trial");
+            Console.WriteLine(results);
+            //op = This is a trial of replace. Let's see how its trialing works out.
+
+            results = testString.Replace(" test ", "trial");
+            Console.WriteLine(results);
+            //op = This is atrialof replace. Let's see how its testing works out.
+
+            testString = "This is a test of replace. Let's see how its testing Works out.";
+            results = testString.Replace("works", "makes");
+            Console.WriteLine(results);
+            //Replace is case sensitive
+            // op = This is a test of replace. Let's see how its testing Works out.
+        }
+
+        private static void InsertingText()
+        {
+            string testString = "This is a test of insert. Let's see how its testing works out.";
+            string results;
+            results = testString.Insert(5, "(test) ");
+            Console.WriteLine(results);
+            //insertion starts from index 5.
+        }
+
+        private static void RemovingText()
+        {
+            string testString = "This is a test of remove. Let's see how its testing works out.";
+            string results;
+            results = testString.Remove(5);
+            Console.WriteLine(results);
+            //op = This
+
+            results = testString.Remove(14, 10);
+            Console.WriteLine(results);
+            //op = This is a test. Let's see how its testing works out.
+        }
+
+        private static void ReverseText()
+        {
+            string testString = "This is a test of remove. Let's see how its testing works out.";
+            string results;
+            results = Reverse(testString);
+            Console.WriteLine(results);
+        }
+
+        public static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
 
     }
